@@ -28,108 +28,90 @@
 
 ## 🛠️ 安装部署
 
-本项目推荐使用 Vercel 一键部署，它会自动处理数据库和对象存储的创建与连接。
+欢迎来到部署环节！推荐使用 **Vercel 一键部署**，整个过程就像泡一杯咖啡一样简单 ☕。Vercel 会自动帮您搞定数据库和图片存储。
 
-### 1) 一键部署 (推荐)
+### 🚀 步骤 1: 一键部署
 
-1. 点击下方按钮一键部署：
+1.  点击下方的魔法按钮，启动部署流程！
 
     [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F10000ge10000%2Fphoto-blog&repository-name=photo-blog&demo-title=Photo+Blog&demo-description=Store+photos+with+original+camera+data&demo-url=https%3A%2F%2Fphotos.sambecker.com&demo-image=https%3A%2F%2Fphotos.sambecker.com%2Ftemplate-image-tight&project-name=Photo+Blog&from=templates&skippable-integrations=1&teamCreateStatus=hidden&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
 
-2. 部署完成后，请继续参考下方的**手动配置**部分，完成身份认证和基础内容配置。
+2.  部署过程需要几分钟，请耐心等待。完成后，Vercel 会为您生成一个项目，但别急，我们还有一些关键配置要做！
 
-### 2) 手动配置
+### ⚙️ 步骤 2: 手动配置
 
-根据您的需求，配置以下环境变量。
+为了让您的站点正常运行，还需要配置一些**环境变量**。
 
-#### 数据库与存储 (Database & Storage)
+#### 📦 数据库与存储 (Database & Storage)
 
-##### 数据库 (Database)
+##### 🗄️ 数据库 (Database)
 
-- **Vercel Postgres**: Vercel 提供的免费 Postgres 数据库服务。
-  - **使用方法**: 在 Vercel 项目的 "Storage" 选项卡中，选择 "Postgres" 并点击 "Create Database"。创建后，将其连接到您的项目即可。Vercel 会自动为您设置 `POSTGRES_URL` 等所有必需的环境变量。
-  - **免费额度**: 提供每月 512MB 存储空间、1GB 内存和 10 万次数据库执行。
+-   **Vercel Postgres**: Vercel 提供的免费 Postgres 数据库。
+    -   **使用方法**: 在 Vercel 项目的 "Storage" 选项卡中，选择 "Postgres" 并点击 "Create Database"。创建后，将其**连接到您的项目**即可。Vercel 会自动为您设置所有必需的环境变量。
+    -   **免费额度**: 每月 **512MB** 存储空间、**1GB** 内存和 **10 万次**数据库执行。
 
-##### 对象存储 (Storage)
+##### 🖼️ 对象存储 (Storage)
 
-您需要选择并配置以下其中一种对象存储方案：
+您需要选择并配置**以下其中一种**对象存储方案：
 
-- **Vercel Blob**: Vercel 提供的对象存储服务，适合存放照片等静态文件。
-  - **使用方法**: 在 Vercel 项目的 "Storage" 选项卡中，选择 "Blob" 并点击 "Create Store"。创建后，将其连接到您的项目即可。
-  - **免费额度**: 提供每月 512MB 存储空间和 1GB 带宽。
-- **Cloudflare R2**: Cloudflare 提供的 S3 兼容对象存储，以低廉的出口带宽费用著称。
-  - **免费额度**: 提供每月 10GB 存储空间、1000 万次 A 类操作（写/列举）和 1 亿次 B 类操作（读）。出口带宽免费。
-  - **配置**: 详见后文「可选对象存储提供商」章节。
-- **AWS S3**: 亚马逊提供的成熟、功能丰富的对象存储服务。
-  - **免费额度**: 提供首年 5GB 标准存储、2 万次 Get 请求和 2 千次 Put 请求。
-  - **配置**: 详见后文「可选对象存储提供商」章节。
-- **MinIO**: 一款开源的、可自托管的 S3 兼容对象存储服务。
-  - **免费额度**: 开源免费，成本为您自己的服务器和带宽费用。
-  - **配置**: 详见后文「可选对象存储提供商」章节。
+-   **Vercel Blob**: Vercel 自家的对象存储，适合存放照片等文件。
+    -   **使用方法**: 在 Vercel 项目的 "Storage" 选项卡中，选择 "Blob" 并点击 "Create Store"。创建后，**连接到您的项目**即可。
+    -   **免费额度**: 每月 **512MB** 存储空间和 **1GB** 带宽。
+-   **Cloudflare R2**: Cloudflare 提供的 S3 兼容存储，以**零出口带宽费用**著称。
+    -   **免费额度**: 每月 **10GB** 存储空间、**1000 万次** A 类操作（写/列举）和 **1 亿次** B 类操作（读）。
+    -   **配置**: 详见后文「可选对象存储提供商」章节。
+-   **AWS S3**: 亚马逊提供的成熟、功能丰富的对象存储服务。
+    -   **免费额度**: 首年 **5GB** 标准存储、**2 万次** Get 请求和 **2 千次** Put 请求。
+    -   **配置**: 详见后文「可选对象存储提供商」章节。
+-   **MinIO**: 一款开源的、可**自托管**的 S3 兼容对象存储。
+    -   **免费额度**: 开源免费，成本为您自己的服务器和带宽费用。
+    -   **配置**: 详见后文「可选对象存储提供商」章节。
 
-#### 身份认证 (Authentication)
+#### 🔐 身份认证 (Authentication)
 
-##### 设置 Auth
+##### 🔑 设置 Auth 密钥
 
-- **说明**: `AUTH_SECRET` 是用于加密和验证用户登录会话（Session）的关键密钥。缺少此密钥将导致身份认证功能完全失效，是保障站点安全的核心配置。
-- **环境变量**: `AUTH_SECRET`
-- **值**: 使用 <https://generate-secret.vercel.app/32> 生成一个 32 位的随机字符串。
+-   **说明**: `AUTH_SECRET` 是一个**极其重要**的安全密钥，用于加密和验证用户登录会话。**缺少此密钥将导致无法登录**。
+-   **环境变量**: `AUTH_SECRET`
+-   **值**: 请访问 <https://generate-secret.vercel.app/32> 生成一个 **32 位**的随机字符串，并填入环境变量。
 
-##### 设置管理员用户
+##### 🧑‍💻 设置管理员用户
 
-- **说明**: 设置用于登录后台 `/admin` 的管理员邮箱和密码。
-- **环境变量**: `ADMIN_EMAIL`
-- **值**: `your-email@example.com`
-- **环境变量**: `ADMIN_PASSWORD`
-- **值**: `一个强密码`
+-   **说明**: 设置用于登录后台 `/admin` 的**管理员邮箱和密码**。
+-   **环境变量**: `ADMIN_EMAIL`
+-   **值**: `your-email@example.com` (请替换为您的真实邮箱)
+-   **环境变量**: `ADMIN_PASSWORD`
+-   **值**: `一个强密码` (请设置一个足够安全的密码)
 
-#### 基础内容 (Content)
+#### 🌐 基础内容 (Content)
 
-##### 配置语言
+##### 🗣️ 配置语言
 
-- **说明**: 设置站点前台展示的语言。
-- **环境变量**: `NEXT_PUBLIC_LOCALE` (支持的语言请参考 README 后续章节)
-- **值**: `zh-cn`
+-   **说明**: 设置站点前台展示的语言。
+-   **环境变量**: `NEXT_PUBLIC_LOCALE` (更多支持的语言请参考 README 后续章节)
+-   **值**: `zh-cn`
 
-##### 配置域名
+##### 🔗 配置域名
 
-- **说明**: 设置您的站点域名，它将用于生成分享链接，并且在未设置导航标题时显示在导航栏。
-- **环境变量**: `NEXT_PUBLIC_DOMAIN`
-- **值**: `photo.910501.xyz`
+-   **说明**: 设置您的站点域名，它将用于生成**分享链接**，并且在未设置导航标题时显示在导航栏。
+-   **环境变量**: `NEXT_PUBLIC_DOMAIN`
+-   **值**: `photo.example.com`
 
-##### 配置页面标题
+##### 📝 配置页面标题
 
-- **说明**: 设置在浏览器标签页和搜索引擎结果中显示的标题。
-- **环境变量**: `NEXT_PUBLIC_META_TITLE`
-- **值**: `Photo Blog`
+-   **说明**: 设置在**浏览器标签页**和**搜索引擎结果**中显示的标题。
+-   **环境变量**: `NEXT_PUBLIC_META_TITLE`
+-   **值**: `Photo Blog`
 
-### 3) 上传你的第一张照片 🎉
+### 🎉 步骤 3: 上传你的第一张照片！
 
-1. 访问 `/admin`
-2. 使用您配置的管理员账号登录
-3. 点击「Upload Photos」上传照片
-4. 可选：填写标题/说明等信息
-5. 点击「Create」创建
+恭喜！所有配置都已完成。现在，让我们来发布第一张作品吧！
 
----
-
-## 🔄 跟进模板更新
-
-- 如果你不打算修改代码，或可以接受将更新公开，推荐直接 Fork 本仓库：<https://github.com/sambecker/exif-photo-blog/fork>，以便后续便捷同步上游更新。
-- 若已在 Vercel 创建项目，参考英文版 README 的「How do I receive template updates?」迁移指引。
-
----
-
-## 💻 本地开发（Windows / PowerShell）
-
-1. 克隆代码仓库
-2. 安装依赖：`pnpm i`
-3. 可选：安装并登录 Vercel CLI：`vercel login`
-4. 关联项目：`vercel link`
-5. 启动开发服务：`vercel dev`
-   - 使用 Vercel 托管的环境变量进行本地开发
-
-提示：本地开发对对象存储有依赖，详见下方「常见问题」中关于本地开发限制的说明。
+1.  访问 `https://<您的域名>/admin`
+2.  使用您刚刚设置的**管理员账号**登录。
+3.  点击「**Upload Photos**」上传您的照片。
+4.  （可选）为您的照片添加标题、说明等信息。
+5.  点击「**Create**」完成创建！
 
 ---
 
@@ -340,7 +322,6 @@
 2）创建具备仅限该 Bucket 读/写/列举/删除权限的用户，并设置私有凭据（不要带 `NEXT_PUBLIC` 前缀）：
 - `MINIO_ACCESS_KEY`
 - `MINIO_SECRET_ACCESS_KEY`
-
 
 ---
 
