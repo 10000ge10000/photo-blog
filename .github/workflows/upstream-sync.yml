@@ -1,0 +1,78 @@
+name: Upstream Sync (Auto Merge)
+
+on:
+  schedule:
+    # 每天 04:10 UTC 运行（可按需调整）
+    - cron: '10 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: upstream-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    name: Rebase and push main on upstream
+    runs-on: ubuntu-latest
+    env:
+      # 可在仓库 Settings > Variables 设置自定义上游与分支
+      UPSTREAM_REPOSITORY: ${{ vars.UPSTREAM_REPOSITORY || 'sambecker/exif-photo-blog' }}
+      UPSTREAM_BRANCH: ${{ vars.UPSTREAM_BRANCH || 'main' }}
+      BASE_BRANCH: ${{ vars.BASE_BRANCH || 'main' }}
+      SYNC_BRANCH: upstream-main
+      DRY_RUN: "${{ vars.DRY_RUN || '1' }}"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git author
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote and fetch
+        run: |
+          echo "Using upstream: https://github.com/${UPSTREAM_REPOSITORY}.git (${UPSTREAM_BRANCH})"
+          git remote add upstream "https://github.com/${UPSTREAM_REPOSITORY}.git" || true
+          git fetch --no-tags upstream "${UPSTREAM_BRANCH}:${SYNC_BRANCH}" --force
+
+      - name: Ensure base branch exists locally
+        run: |
+          git fetch origin "${BASE_BRANCH}:${BASE_BRANCH}" --update-head-ok
+
+      - name: Check if upstream changes exist
+        id: check
+        run: |
+          # 计算 base 与 upstream 的差异（对称差）
+          ahead_behind=$(git rev-list --left-right --count "${BASE_BRANCH}...${SYNC_BRANCH}")
+          echo "ahead_behind=${ahead_behind}" >> $GITHUB_OUTPUT
+          echo "Diff (base...upstream): ${ahead_behind}"
+
+      - name: Rebase main onto upstream
+        if: steps.check.outputs.ahead_behind != '0\t0'
+        run: |
+          set -e
+          git switch "${BASE_BRANCH}"
+          # 备份当前 main 以便出问题时可回滚
+          backup="backup/${BASE_BRANCH}-$(date +%s)"
+          git branch "${backup}" || true
+          echo "Created backup branch: ${backup}"
+
+          # 尝试 rebase 到最新上游
+          git rebase "${SYNC_BRANCH}"
+
+      - name: Push main (force-with-lease)
+        if: steps.check.outputs.ahead_behind != '0\t0' && env.DRY_RUN != '1'
+        run: |
+          git push --force-with-lease origin "${BASE_BRANCH}:${BASE_BRANCH}"
+
+      - name: Dry run notice
+        if: steps.check.outputs.ahead_behind != '0\t0' && env.DRY_RUN == '1'
+        run: |
+          echo "DRY_RUN=1 已开启，不推送变更。rebase 已在工作流中完成但未写回远端。"
