@@ -36,8 +36,6 @@
 
    [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F10000ge10000%2Fphoto-blog&repository-name=photo-blog&demo-title=Photo+Blog&demo-description=Store+photos+with+original+camera+data&demo-url=https%3A%2F%2Fphotos.sambecker.com&demo-image=https%3A%2F%2Fphotos.sambecker.com%2Ftemplate-image-tight&project-name=Photo+Blog&from=templates&skippable-integrations=1&teamCreateStatus=hidden&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
 
-   文字链接：[一键部署链接](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F10000ge10000%2Fphoto-blog&repository-name=photo-blog&demo-title=Photo+Blog&demo-description=Store+photos+with+original+camera+data&demo-url=https%3A%2F%2Fphotos.sambecker.com&demo-image=https%3A%2F%2Fphotos.sambecker.com%2Ftemplate-image-tight&project-name=Photo+Blog&from=templates&skippable-integrations=1&teamCreateStatus=hidden&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
-
 1. 在 Vercel 项目设置中配置生产域名变量：设置环境变量 `NEXT_PUBLIC_DOMAIN`（例如：`photos.example.com`；用于生成绝对 URL，且在未设置导航标题时会显示在右上角导航中）。
 
 ### 2）配置登录认证（Auth）
