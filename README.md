@@ -1,6 +1,8 @@
 
 # 📷 EXIF Photo Blog（中文安装与使用指南）
 
+> 本项目修改自 [sambecker/exif-photo-blog](https://github.com/sambecker/exif-photo-blog)，感谢原作者的杰出工作。
+
 > English version: [README.en.md](./README.en.md) · 部署前检查清单：[`DEPLOYMENT-CHECKLIST.md`](./DEPLOYMENT-CHECKLIST.md)
 
 <https://github.com/sambecker/exif-photo-blog/assets/169298/4253ea54-558a-4358-8834-89943cfbafb4>
