@@ -24,7 +24,7 @@ jobs:
       UPSTREAM_BRANCH: ${{ vars.UPSTREAM_BRANCH || 'main' }}
       BASE_BRANCH: ${{ vars.BASE_BRANCH || 'main' }}
       SYNC_BRANCH: upstream-main
-      DRY_RUN: "${{ vars.DRY_RUN || '1' }}"
+      DRY_RUN: "${{ vars.DRY_RUN || '0' }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
