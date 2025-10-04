@@ -5,7 +5,7 @@
 
 <https://github.com/sambecker/exif-photo-blog/assets/169298/4253ea54-558a-4358-8834-89943cfbafb4>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/sambecker-pro/clone?demo-description=Store%20photos%20with%20original%20camera%20data&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F39rys245Px3FVBGRJNYEON%2Fbf68d5c052bda9e9e5bec21878764bc3%2Fimage.png&demo-title=Photo%20Blog&demo-url=https%3A%2F%2Fphotos.sambecker.com&from=templates&project-name=Photo%20Blog&repository-name=exif-photo-blog&repository-url=https%3A%2F%2Fgithub.com%2Fsambecker%2Fexif-photo-blog&skippable-integrations=1&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D&teamCreateStatus=hidden)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F10000ge10000%2Fphoto-blog&repository-name=photo-blog&demo-description=Store%20photos%20with%20original%20camera%20data&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F39rys245Px3FVBGRJNYEON%2Fbf68d5c052bda9e9e5bec21878764bc3%2Fimage.png&demo-title=Photo%20Blog&demo-url=https%3A%2F%2Fphotos.sambecker.com&from=templates&project-name=Photo%20Blog&skippable-integrations=1&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D&teamCreateStatus=hidden)
 
 演示站点：<https://photos.sambecker.com>
 
@@ -32,7 +32,11 @@
 
 ### 1）一键部署至 Vercel
 
-1. 点击一键部署链接：[一键部署链接](https://vercel.com/new/clone?demo-title=Photo+Blog&demo-description=Store+photos+with+original+camera+data&demo-url=https%3A%2F%2Fphotos.sambecker.com&demo-image=https%3A%2F%2Fphotos.sambecker.com%2Ftemplate-image-tight&project-name=Photo+Blog&repository-name=exif-photo-blog&repository-url=https%3A%2F%2Fgithub.com%2Fsambecker%2Fexif-photo-blog&from=templates&skippable-integrations=1&teamCreateStatus=hidden&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
+1. 点击一键部署链接：
+
+   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F10000ge10000%2Fphoto-blog&repository-name=photo-blog&demo-title=Photo+Blog&demo-description=Store+photos+with+original+camera+data&demo-url=https%3A%2F%2Fphotos.sambecker.com&demo-image=https%3A%2F%2Fphotos.sambecker.com%2Ftemplate-image-tight&project-name=Photo+Blog&from=templates&skippable-integrations=1&teamCreateStatus=hidden&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
+
+   文字链接：[一键部署链接](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F10000ge10000%2Fphoto-blog&repository-name=photo-blog&demo-title=Photo+Blog&demo-description=Store+photos+with+original+camera+data&demo-url=https%3A%2F%2Fphotos.sambecker.com&demo-image=https%3A%2F%2Fphotos.sambecker.com%2Ftemplate-image-tight&project-name=Photo+Blog&from=templates&skippable-integrations=1&teamCreateStatus=hidden&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
 
 1. 在 Vercel 项目设置中配置生产域名变量：设置环境变量 `NEXT_PUBLIC_DOMAIN`（例如：`photos.example.com`；用于生成绝对 URL，且在未设置导航标题时会显示在右上角导航中）。
 
@@ -172,15 +176,15 @@
 - `NEXT_PUBLIC_GEO_PRIVACY = 1`：隐私模式，不收集/展示地理信息（会重新压缩以移除 GPS）
 - `NEXT_PUBLIC_ALLOW_PUBLIC_DOWNLOADS = 1`：允许所有访客下载原图（可能增加带宽消耗）
 - `NEXT_PUBLIC_SOCIAL_NETWORKS`：分享弹窗中的社交平台列表（逗号分隔）
-	- 可选值：`x`（默认）、`threads`、`facebook`、`linkedin`、`all`、`none`
+  - 可选值：`x`（默认）、`threads`、`facebook`、`linkedin`、`all`、`none`
 - `NEXT_PUBLIC_SITE_FEEDS = 1`：启用 `/feed.json` 与 `/rss.xml`
 - `NEXT_PUBLIC_OG_TEXT_ALIGNMENT = BOTTOM`：OG 文本底部对齐（默认顶部）
 
 #### 页面脚本与分析（Scripts & Analytics）
 
 - `PAGE_SCRIPT_URLS`：以逗号分隔的一组 URL，将注入至 body 底部（通过 next/script）
-	- URL 必须以 `https` 开头
-	- ⚠️ 将在每个页面执行任意脚本，请谨慎使用
+  - URL 必须以 `https` 开头
+  - ⚠️ 将在每个页面执行任意脚本，请谨慎使用
 
 ---
 
@@ -196,23 +200,23 @@
 
 ```json
 [
-	{
-		"AllowedHeaders": ["*"],
-		"AllowedMethods": ["GET", "PUT"],
-		"AllowedOrigins": [
-			"http://localhost:3000",
-			"https://{VERCEL_PROJECT_NAME}*.vercel.app",
-			"{PRODUCTION_DOMAIN}"
-		]
-	}
+  {
+    "AllowedHeaders": ["*"],
+    "AllowedMethods": ["GET", "PUT"],
+    "AllowedOrigins": [
+      "http://localhost:3000",
+      "https://{VERCEL_PROJECT_NAME}*.vercel.app",
+      "{PRODUCTION_DOMAIN}"
+    ]
+  }
 ]
 ```
 
 - 启用公共访问：绑定自定义域（Cloudflare 域名）或允许使用 `r2.dev` 公共子域
 - 设置公有端变量：
-	- `NEXT_PUBLIC_CLOUDFLARE_R2_BUCKET`
-	- `NEXT_PUBLIC_CLOUDFLARE_R2_ACCOUNT_ID`
-	- `NEXT_PUBLIC_CLOUDFLARE_R2_PUBLIC_DOMAIN`（自定义域或 `*.r2.dev`）
+  - `NEXT_PUBLIC_CLOUDFLARE_R2_BUCKET`
+  - `NEXT_PUBLIC_CLOUDFLARE_R2_ACCOUNT_ID`
+  - `NEXT_PUBLIC_CLOUDFLARE_R2_PUBLIC_DOMAIN`（自定义域或 `*.r2.dev`）
 
 2）创建 API Token（仅限目标 Bucket 的读写权限）并设置私有凭据（不要带 `NEXT_PUBLIC` 前缀）：
 
@@ -225,44 +229,44 @@
 
 ```json
 [
-	{
-		"AllowedHeaders": ["*"],
-		"AllowedMethods": ["GET", "PUT"],
-		"AllowedOrigins": [
-			"http://localhost:*",
-			"https://{VERCEL_PROJECT_NAME}*.vercel.app",
-			"{PRODUCTION_DOMAIN}"
-		],
-		"ExposeHeaders": []
-	}
+  {
+    "AllowedHeaders": ["*"],
+    "AllowedMethods": ["GET", "PUT"],
+    "AllowedOrigins": [
+      "http://localhost:*",
+      "https://{VERCEL_PROJECT_NAME}*.vercel.app",
+      "{PRODUCTION_DOMAIN}"
+    ],
+    "ExposeHeaders": []
+  }
 ]
 ```
 
 - 设置公有端变量：
-	- `NEXT_PUBLIC_AWS_S3_BUCKET`
-	- `NEXT_PUBLIC_AWS_S3_REGION`（例如 `us-east-1`）
+  - `NEXT_PUBLIC_AWS_S3_BUCKET`
+  - `NEXT_PUBLIC_AWS_S3_REGION`（例如 `us-east-1`）
 
 2）创建 IAM 策略 + 用户，分配读写权限并生成密钥（不要带 `NEXT_PUBLIC` 前缀）：
 
 ```json
 {
-	"Version": "2012-10-17",
-	"Statement": [
-		{
-			"Effect": "Allow",
-			"Action": [
-				"s3:PutObject",
-				"s3:PutObjectACL",
-				"s3:GetObject",
-				"s3:ListBucket",
-				"s3:DeleteObject"
-			],
-			"Resource": [
-				"arn:aws:s3:::{BUCKET_NAME}",
-				"arn:aws:s3:::{BUCKET_NAME}/*"
-			]
-		}
-	]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:PutObjectACL",
+        "s3:GetObject",
+        "s3:ListBucket",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::{BUCKET_NAME}",
+        "arn:aws:s3:::{BUCKET_NAME}/*"
+      ]
+    }
+  ]
 }
 ```
 
@@ -273,10 +277,10 @@
 1）部署 MinIO 并创建 Bucket；为 Bucket 设置只读公共策略（示例略）；
 
 - 公有端变量：
-	- `NEXT_PUBLIC_MINIO_BUCKET`
-	- `NEXT_PUBLIC_MINIO_DOMAIN`
-	- `NEXT_PUBLIC_MINIO_PORT`（可选）
-	- `NEXT_PUBLIC_MINIO_DISABLE_SSL = 1`（禁用 SSL；默认使用 HTTPS）
+  - `NEXT_PUBLIC_MINIO_BUCKET`
+  - `NEXT_PUBLIC_MINIO_DOMAIN`
+  - `NEXT_PUBLIC_MINIO_PORT`（可选）
+  - `NEXT_PUBLIC_MINIO_DISABLE_SSL = 1`（禁用 SSL；默认使用 HTTPS）
 
 2）创建具备仅限该 Bucket 读/写/列举/删除权限的用户，并设置私有凭据（不要带 `NEXT_PUBLIC` 前缀）：
 - `MINIO_ACCESS_KEY`
@@ -301,53 +305,53 @@ Supabase 示例：
 
 - 通过 `NEXT_PUBLIC_LOCALE` 指定前台（非管理端）文案语言。
 - 当前内置语言：
-	- `bd-bn`、`en-gb`、`en-us`、`id-id`、`pt-br`、`pt-pt`、`tr-tr`、`zh-cn`
+  - `bd-bn`、`en-gb`、`en-us`、`id-id`、`pt-br`、`pt-pt`、`tr-tr`、`zh-cn`
 
 ---
 
 ## ❓ 常见问题（FAQ）
 
 - 为什么照片修改后没有立刻生效？
-	- 首页与网格页默认使用静态优化，变更可能需要几分钟才能传播。可以到 `/admin/configuration` 点击「Clear Cache」清理缓存。
+  - 首页与网格页默认使用静态优化，变更可能需要几分钟才能传播。可以到 `/admin/configuration` 点击「Clear Cache」清理缓存。
 
 - 启用静态优化后，为什么生产环境构建失败？
-	- 有报告显示：大于 30MB 的大图或在 Vercel 前使用 CDN（例如 Cloudflare）可能会影响稳定性。可暂时关闭相关静态优化开关或参考 Issues #184/#185。
+  - 有报告显示：大于 30MB 的大图或在 Vercel 前使用 CDN（例如 Cloudflare）可能会影响稳定性。可暂时关闭相关静态优化开关或参考 Issues #184/#185。
 
 - 为什么旧照片的效果/数据不一致？
-	- 历史版本在模糊、镜头、AI/隐私等方面的处理方式有所演进。可在照片旁点击同步按钮，或前往 `/admin/photos/updates` 批量同步需要更新的照片。
+  - 历史版本在模糊、镜头、AI/隐私等方面的处理方式有所演进。可在照片旁点击同步按钮，或前往 `/admin/photos/updates` 批量同步需要更新的照片。
 
 - 分享链接时 OG 图不显示？
-	- iMessage、Slack、X 等平台抓取超时很敏感。建议开启 `NEXT_PUBLIC_STATICALLY_OPTIMIZE_PHOTOS = 1` 与 `NEXT_PUBLIC_STATICALLY_OPTIMIZE_PHOTO_OG_IMAGES = 1` 预渲染，但这会增加平台用量。
+  - iMessage、Slack、X 等平台抓取超时很敏感。建议开启 `NEXT_PUBLIC_STATICALLY_OPTIMIZE_PHOTOS = 1` 与 `NEXT_PUBLIC_STATICALLY_OPTIMIZE_PHOTO_OG_IMAGES = 1` 预渲染，但这会增加平台用量。
 
 - 网格缩略图太小？
-	- 网格密度由长宽比决定（≤1 的比例每行更多）。可设置 `NEXT_PUBLIC_GRID_ASPECT_RATIO` 或强制大缩略图 `NEXT_PUBLIC_SHOW_LARGE_THUMBNAILS = 1`。
+  - 网格密度由长宽比决定（≤1 的比例每行更多）。可设置 `NEXT_PUBLIC_GRID_ASPECT_RATIO` 或强制大缩略图 `NEXT_PUBLIC_SHOW_LARGE_THUMBNAILS = 1`。
 
 - 标记为私密的照片是否绝对安全？
-	- 私密路径需要登录才能访问，但对象存储直链仍然可被访问（具有不可预测的随机 URL）。请谨慎对待。
+  - 私密路径需要登录才能访问，但对象存储直链仍然可被访问（具有不可预测的随机 URL）。请谨慎对待。
 
 - 本地开发是否必须依赖外部对象存储？
-	- 目前是的。若你有可行策略能在本地模拟外部存储并配合 `next/image` 调试，欢迎提交 PR。
+  - 目前是的。若你有可行策略能在本地模拟外部存储并配合 `next/image` 调试，欢迎提交 PR。
 
 - 是否支持 HEIC？
-	- 目前 `sharp` 与 `next/image` 尚不支持直接处理 HEIC。通过 Apple 系统的分享面板上传会自动转为 JPG。详见相关 issue 讨论。
+  - 目前 `sharp` 与 `next/image` 尚不支持直接处理 HEIC。通过 Apple 系统的分享面板上传会自动转为 JPG。详见相关 issue 讨论。
 
 - Fujifilm 模拟为何没有和 EXIF 一起导入？
-	- 模拟数据存在厂商私有 Makernote 区。中间处理（如 iOS 裁剪）可能导致数据缺失。尽量使用相机原始文件，或在后台手动选择。
+  - 模拟数据存在厂商私有 Makernote 区。中间处理（如 iOS 裁剪）可能导致数据缺失。尽量使用相机原始文件，或在后台手动选择。
 
 - 启用 AI 后连不上 OpenAI？
-	- 需要预先充值/购买额度；如自定义了 API Key 权限，请确保开启 Responses API 写权限。
+  - 需要预先充值/购买额度；如自定义了 API Key 权限，请确保开启 Responses API 写权限。
 
 ---
 
 ## 🧪 脚本与命令
 
 - 主要命令（见 `package.json`）：
-	- `pnpm dev`：开发模式（Next.js + Turbopack）
-	- `pnpm build`：构建
-	- `pnpm start`：启动生产服务
-	- `pnpm lint`：ESLint 检查
-	- `pnpm test`：Jest 测试（watch 模式）
-	- `pnpm analyze`：打包分析（`ANALYZE=true next build`）
+  - `pnpm dev`：开发模式（Next.js + Turbopack）
+  - `pnpm build`：构建
+  - `pnpm start`：启动生产服务
+  - `pnpm lint`：ESLint 检查
+  - `pnpm test`：Jest 测试（watch 模式）
+  - `pnpm analyze`：打包分析（`ANALYZE=true next build`）
 
 ---
 
