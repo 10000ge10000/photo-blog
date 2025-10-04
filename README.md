@@ -28,31 +28,76 @@
 
 ## 🛠️ 安装部署
 
-本项目推荐使用 Vercel 一键部署，并使用 Vercel Postgres + Vercel Blob 作为默认数据库与对象存储。
+本项目推荐使用 Vercel 一键部署，它会自动处理数据库和对象存储的创建与连接。
 
-### 1）一键部署至 Vercel
+### 1) 一键部署 (推荐)
 
-1. 点击一键部署链接：
+1. 点击下方按钮一键部署：
 
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F10000ge10000%2Fphoto-blog&repository-name=photo-blog&demo-title=Photo+Blog&demo-description=Store+photos+with+original+camera+data&demo-url=https%3A%2F%2Fphotos.sambecker.com&demo-image=https%3A%2F%2Fphotos.sambecker.com%2Ftemplate-image-tight&project-name=Photo+Blog&from=templates&skippable-integrations=1&teamCreateStatus=hidden&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
+    [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F10000ge10000%2Fphoto-blog&repository-name=photo-blog&demo-title=Photo+Blog&demo-description=Store+photos+with+original+camera+data&demo-url=https%3A%2F%2Fphotos.sambecker.com&demo-image=https%3A%2F%2Fphotos.sambecker.com%2Ftemplate-image-tight&project-name=Photo+Blog&from=templates&skippable-integrations=1&teamCreateStatus=hidden&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
 
-1. 在 Vercel 项目设置中配置生产域名变量：设置环境变量 `NEXT_PUBLIC_DOMAIN`（例如：`photos.example.com`；用于生成绝对 URL，且在未设置导航标题时会显示在右上角导航中）。
+2. 部署完成后，请继续参考下方的**手动配置**部分，完成身份认证和基础内容配置。
 
-### 2）配置登录认证（Auth）
+### 2) 手动配置
 
-1. 生成并设置 Auth Secret：前往 <https://generate-secret.vercel.app/32> 生成 32 位随机字符串，并在 Vercel 环境变量中设置 `AUTH_SECRET`。
+根据您的需求，配置以下环境变量。
 
-1. 添加管理员账号（环境变量）：设置 `ADMIN_EMAIL` 与 `ADMIN_PASSWORD`。
+#### 数据库与存储 (Database & Storage)
 
-1. 触发一次重新部署（Redeploy）：在 Vercel 项目「Deployments」页，点击最近一次部署旁的 ••• 按钮，选择「Redeploy」。
+##### 数据库 (Database)
 
-### 3）上传你的第一张照片 🎉
+- **Postgres**: 创建您的数据库，并将连接字符串存入 `POSTGRES_URL` 环境变量。如果您使用 Vercel Postgres，此过程将自动完成。
+
+##### 对象存储 (Storage)
+
+您需要选择并配置以下其中一种对象存储方案：
+
+- **Vercel Blob**: 创建 Blob 存储并连接到您的项目。如果您使用 Vercel 一键部署，此过程将自动完成。
+- **Cloudflare R2**: 创建并配置 R2 Bucket。详见后文「可选对象存储提供商」章节。
+- **AWS S3**: 创建并配置 S3 Bucket。详见后文「可选对象存储提供商」章节。
+- **MinIO**: 搭建并配置您的 MinIO 服务。详见后文「可选对象存储提供商」章节。
+
+#### 身份认证 (Authentication)
+
+##### 设置 Auth
+
+- 生成一个 32 位的随机字符串作为 `AUTH_SECRET`。您可以访问 <https://generate-secret.vercel.app/32> 快速生成。
+- **环境变量**: `AUTH_SECRET`
+
+##### 设置管理员用户
+
+- 设置用于登录后台的管理员邮箱和密码。
+- **环境变量**:
+  - `ADMIN_EMAIL`
+  - `ADMIN_PASSWORD`
+
+#### 基础内容 (Content)
+
+##### 配置语言
+
+- 设置站点前台展示的语言。
+- **值**: `zh-cn`
+- **环境变量**: `NEXT_PUBLIC_LOCALE` (支持的语言请参考 README 后续章节)
+
+##### 配置域名
+
+- 设置您的站点域名，它将用于生成分享链接，并且在未设置导航标题时显示在导航栏。
+- **值**: `photo.910501.xyz`
+- **环境变量**: `NEXT_PUBLIC_DOMAIN`
+
+##### 配置页面标题
+
+- 设置在浏览器标签页和搜索引擎结果中显示的标题。
+- **值**: `Photo Blog`
+- **环境变量**: `NEXT_PUBLIC_META_TITLE`
+
+### 3) 上传你的第一张照片 🎉
 
 1. 访问 `/admin`
-1. 使用第 2 步配置的管理员账号登录
-1. 点击「Upload Photos」上传照片
-1. 可选：填写标题/说明等信息
-1. 点击「Create」创建
+2. 使用您配置的管理员账号登录
+3. 点击「Upload Photos」上传照片
+4. 可选：填写标题/说明等信息
+5. 点击「Create」创建
 
 ---
 
